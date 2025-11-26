@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 1 – Responsive Grid Layout</title>
+
+  <style>
+    /* RESET + BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f4f4;  /* light grey page background */
+      color: #333;
+      line-height: 1.5;
+    }
+
+    /* MAIN GRID CONTAINER */
+    .grid-container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 10px;
+      display: grid;
+      gap: 10px;
+
+      /* Desktop: 3 columns */
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-areas:
+        "header header header"
+        "nav    nav    nav"
+        "hero   hero   offer"
+        "about  features features"
+        "footer footer footer";
+    }
+
+    /* Common box style */
+    header,
+    nav,
+    section,
+    aside,
+    footer {
+      background-color: #ffffff;
+      padding: 15px;
+      border: 1px solid #dddddd;
+    }
+
+    /* GRID AREAS */
+    .header   { grid-area: header; }
+    .nav      { grid-area: nav; }
+    .hero     { grid-area: hero; }
+    .about    { grid-area: about; }
+    .offer    { grid-area: offer; }
+    .features { grid-area: features; }
+    .footer   { grid-area: footer; }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    /* NAVIGATION */
+    .nav {
+      text-align: left;
+    }
+
+    .nav a {
+      display: inline-block;
+      margin-right: 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* HERO */
+    .hero h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* ABOUT */
+    .about h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .about p {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    /* OFFER */
+    .offer h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .offer p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .offer button {
+      padding: 6px 14px;
+      font-size: 14px;
+      border: none;
+      background-color: #007bff;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .offer button:hover {
+      background-color: #0056b3;
+    }
+
+    /* FEATURES */
+    .features h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .features ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .features li {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .features li::before {
+      content: "✓ ";
+      color: green;
+      font-weight: bold;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* TABLET VIEW: <= 900px */
+    @media (max-width: 900px) {
+      .grid-container {
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-areas:
+          "header header"
+          "nav    nav"
+          "hero   hero"
+          "about  offer"
+          "features features"
+          "footer footer";
+      }
+    }
+
+    /* MOBILE VIEW: <= 600px */
+    @media (max-width: 600px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "nav"
+          "hero"
+          "about"
+          "offer"
+          "features"
+          "footer";
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .nav a {
+        display: block;
+        margin: 4px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">LOGO</div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Welcome to Our Site</h1>
+      <p>Discover amazing experiences</p>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <h2>About Our Company</h2>
+      <p>We are dedicated to providing exceptional service and innovative solutions to meet your needs. Our team of experts works tirelessly to ensure customer satisfaction.</p>
+      <p>With years of experience in the industry, we've helped thousands of clients achieve their goals and transform their businesses.</p>
+      <p>Our commitment to excellence and attention to detail sets us apart from the competition.</p>
+    </section>
+
+    <!-- SPECIAL OFFER -->
+    <aside class="offer">
+      <h3>Special Offer!</h3>
+      <p>Sign up today and get an exclusive discount on your first project with us.</p>
+      <button>Get Started Today</button>
+    </aside>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <h3>Why Choose Us?</h3>
+      <ul>
+        <li>24/7 Customer Support</li>
+        <li>Industry Leading Experts</li>
+        <li>Satisfaction Guaranteed</li>
+      </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      © 2025 Your Company Name. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
